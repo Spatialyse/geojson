@@ -9,17 +9,17 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
 public class Polygon extends Geometry {
-    private final List<List<double[][]>> coordinates;
+    private final List<double[][]> coordinates;
     private final double[] bbox;
 
     @JsonCreator
-    public Polygon(@JsonProperty("coordinates") List<List<double[][]>> coordinates) {
+    public Polygon(@JsonProperty("coordinates") List<double[][]> coordinates) {
         super();
         this.coordinates = coordinates;
         this.bbox = null;
     }
 
-    public List<List<double[][]>> getCoordinates() {
+    public List<double[][]> getCoordinates() {
         return coordinates;
     }
 
