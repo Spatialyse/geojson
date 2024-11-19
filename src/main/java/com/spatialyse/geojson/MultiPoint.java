@@ -7,8 +7,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
 public class MultiPoint extends Geometry {
-    private final double[][] coordinates;
-    private final double[] bbox;
+    private double[][] coordinates;
+    private double[] bbox;
+
+    public MultiPoint() {
+    }
 
     @JsonCreator
     public MultiPoint(@JsonProperty("coordinates") double [][] coordinates) {
@@ -24,4 +27,14 @@ public class MultiPoint extends Geometry {
     public double[] getBbox() {
         return bbox;
     }
+
+	@Override
+	public <T> T accept(GeoJsonObjectVisitor<T> geoJsonObjectVisitor) {
+		return geoJsonObjectVisitor.visit(this);
+	}
+
+	@Override
+	public String toString() {
+		return "MultiPoint{} " + super.toString();
+	}
 }

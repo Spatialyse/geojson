@@ -9,8 +9,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
 public class Polygon extends Geometry {
-    private final List<double[][]> coordinates;
-    private final double[] bbox;
+    private List<double[][]> coordinates;
+    private double[] bbox;
+
+    public Polygon() {
+    }
 
     @JsonCreator
     public Polygon(@JsonProperty("coordinates") List<double[][]> coordinates) {
@@ -26,4 +29,14 @@ public class Polygon extends Geometry {
     public double[] getBbox() {
         return bbox;
     }
+
+	@Override
+	public <T> T accept(GeoJsonObjectVisitor<T> geoJsonObjectVisitor) {
+		return geoJsonObjectVisitor.visit(this);
+	}
+
+	@Override
+	public String toString() {
+		return "Polygon{} " + super.toString();
+	}
 }

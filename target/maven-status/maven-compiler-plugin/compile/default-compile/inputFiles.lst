@@ -1,8 +1,13 @@
+d:\aeromac\libs\geojson\src\main\java\com\spatialyse\geojson\Crs.java
+d:\aeromac\libs\geojson\src\main\java\com\spatialyse\geojson\extra\BoundingBox.java
 d:\aeromac\libs\geojson\src\main\java\com\spatialyse\geojson\Feature.java
 d:\aeromac\libs\geojson\src\main\java\com\spatialyse\geojson\FeatureCollection.java
 d:\aeromac\libs\geojson\src\main\java\com\spatialyse\geojson\GeoJSON.java
+d:\aeromac\libs\geojson\src\main\java\com\spatialyse\geojson\GeoJsonObjectVisitor.java
 d:\aeromac\libs\geojson\src\main\java\com\spatialyse\geojson\Geometry.java
 d:\aeromac\libs\geojson\src\main\java\com\spatialyse\geojson\GeometryCollection.java
+d:\aeromac\libs\geojson\src\main\java\com\spatialyse\geojson\gwt\GwtUtils.java
+d:\aeromac\libs\geojson\src\main\java\com\spatialyse\geojson\jackson\CrsType.java
 d:\aeromac\libs\geojson\src\main\java\com\spatialyse\geojson\LineString.java
 d:\aeromac\libs\geojson\src\main\java\com\spatialyse\geojson\MultiLineString.java
 d:\aeromac\libs\geojson\src\main\java\com\spatialyse\geojson\MultiPoint.java

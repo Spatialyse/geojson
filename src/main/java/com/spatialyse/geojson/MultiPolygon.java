@@ -9,8 +9,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
 public class MultiPolygon extends Geometry {
-    private final List<List<double[][]>> coordinates;
-    private final double[] bbox;
+    private List<List<double[][]>> coordinates;
+    private double[] bbox;
+
+	public MultiPolygon() {
+	}
 
     @JsonCreator
     public MultiPolygon(@JsonProperty("coordinates") List<List<double[][]>> coordinates) {
@@ -26,4 +29,14 @@ public class MultiPolygon extends Geometry {
     public double[] getBbox() {
         return bbox;
     }
+
+	@Override
+	public <T> T accept(GeoJsonObjectVisitor<T> geoJsonObjectVisitor) {
+		return geoJsonObjectVisitor.visit(this);
+	}
+
+	@Override
+	public String toString() {
+		return "MultiPolygon{} " + super.toString();
+	}
 }
