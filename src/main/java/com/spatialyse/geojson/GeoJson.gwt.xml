@@ -3,5 +3,6 @@
     "http://gwtproject.org/doctype/2.8.2/gwt-module.dtd">
 <module>
   <inherits name="com.github.nmorel.gwtjackson.GwtJackson" />
+  <extend-configuration-property name="gwtjackson.configuration.extension" value="com.spatialyse.geojson.gwt.GeoJsonConfig"/>
   <source path=""/>
 </module>

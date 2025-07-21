@@ -6,8 +6,8 @@
   <artifactId>geojson</artifactId>
   <version>0.1</version>
 
-  <packaging>gwt-lib</packaging>
   <name>Spatialyse GeoJson</name>
+  <packaging>jar</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,12 +17,14 @@
     <maven.source.version>3.0.1</maven.source.version>
     <maven.compiler.plugin>3.8.0</maven.compiler.plugin>
     <jackson-version>2.18.1</jackson-version>
+    <gwt-version>2.12.1</gwt-version>
   </properties>
   <dependencies>
     <dependency>
-      <groupId>com.google.gwt</groupId>
+      <groupId>org.gwtproject</groupId>
       <artifactId>gwt-user</artifactId>
-      <version>2.10.0</version>
+      <version>${gwt-version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -43,24 +45,65 @@
   </dependencies>
   <build>
     <plugins>
+      <!-- Standard JAR -->
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>default-jar</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+          <!-- GWT JAR: only .java and .gwt.xml -->
+          <execution>
+            <id>gwt-lib</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <classifier>gwt</classifier>
+              <classesDirectory>${project.basedir}/src/main/java</classesDirectory>
+              <includes>
+                <include>**/*.java</include>
+                <include>**/*.gwt.xml</include>
+              </includes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Source JAR only for GWT -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
         <version>${maven.source.version}</version>
         <executions>
+          <!-- Skip source jar for default jar -->
+          <!-- Source JAR for GWT -->
           <execution>
-            <id>attach-sources</id>
+            <id>attach-gwt-sources</id>
             <phase>package</phase>
             <goals>
-              <goal>jar-no-fork</goal>
+              <goal>jar</goal>
             </goals>
+            <configuration>
+              <classifier>gwt-sources</classifier>
+              <includes>
+                <include>**/*.java</include>
+                <include>**/*.gwt.xml</include>
+              </includes>
+            </configuration>
           </execution>
         </executions>
       </plugin>
+
+      <!-- GWT Plugin -->
       <plugin>
         <groupId>net.ltgt.gwt.maven</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
-        <version>1.0.1</version>
+        <version>1.1.0</version>
         <extensions>true</extensions>
         <configuration>
           <moduleName>com.spatialyse.geojson.GeoJson</moduleName>
@@ -69,4 +112,5 @@
       </plugin>
     </plugins>
   </build>
+
 </project>
