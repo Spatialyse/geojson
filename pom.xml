@@ -113,4 +113,12 @@
     </plugins>
   </build>
 
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/Spatialyse/geojson</url>
+    </repository>
+  </distributionManagement>
+
 </project>
