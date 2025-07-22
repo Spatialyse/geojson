@@ -23,7 +23,7 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        server-id: github
+        server-id: github-spatialyse
         settings-path: ${{ github.workspace }}
 
     - name: Build with Maven
